@@ -2,20 +2,32 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+var Board = React.createClass({
+  propTypes: {
+    count: function (props, propName) {
+      if(typeof props[propName] !== "number") {
+        return new Error("the count must be a number")
+      }
+
+      if(props[propName] > 100) {
+        return new Error('Creating ' + props[propName] + ' notes is ridiculous')
+      }
+      
+    }
+
+  },
+  getInitialState() {
+    return {
+      notes: []
+    }
+  },
+  ComponentWillMount() {
+    if(this.props.count) {
+      
+    }
   }
-}
+
+
+})
 
 export default App;
